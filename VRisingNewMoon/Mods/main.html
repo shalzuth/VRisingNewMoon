@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>	
+	<title>VRising Map</title>
+    <link rel='stylesheet' href='https://unpkg.com/leaflet@1.8.0/dist/leaflet.css'/>
+    <script src='https://unpkg.com/leaflet@1.8.0/dist/leaflet.js'></script>
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+		}
+		.leaflet-container {
+			height: 800px;
+			width: 800px;
+			max-width: 100%;
+			max-height: 100%;
+		}
+	</style>	
+</head>
+<body>
+<div id='map' style='width: 800px; height: 800px;'></div>
+<script>
+var map = L.map('map').setView([0.7, -0.7], 10);
+function placeMarker(name, pX, pY){
+	var base = 2915;
+	var x = pX / base;
+	var y = pY / base;
+	L.marker([1.003 + y, -0.236 + x]).addTo(map).bindPopup(name, {closeOnClick: false, autoClose: false}).openPopup();
+}
+L.tileLayer('https://tiles.mapgenie.io/games/v-rising/vardoran/default-v1/{z}/{x}/{y}.jpg', {
+	maxZoom: 15,
+	minZoom: 8
+}).addTo(map);
+//placeMarker("shalz", -691.2883, -79.85477);
+</script>
+Using mapgenie.io for tiles
+</body>
+</html>
